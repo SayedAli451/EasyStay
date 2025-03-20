@@ -1,0 +1,24 @@
+{% extends 'hotel/base.html' %}
+
+{% block title %}Rooms - StayEasy{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Our Rooms</h2>
+    <div class="row">
+        {% for room in rooms %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ room.image_url }}" class="card-img-top" alt="{{ room.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ room.name }}</h5>
+                    <p class="card-text">{{ room.description }}</p>
+                    <p><strong>Price: ${{ room.price_per_night }}/night</strong></p>
+                    <a href="#" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
