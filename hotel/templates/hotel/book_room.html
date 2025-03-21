@@ -1,0 +1,22 @@
+{% extends 'hotel/base.html' %}
+
+{% block title %}Book Room - StayEase{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Book {{ room.name }}</h2>
+    <div class="card">
+        <img src="{{ room.image_url }}" class="card-img-top" alt="{{ room.name }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ room.name }}</h5>
+            <p><strong>Capacity:</strong> {{ room.capacity }} guests</p>
+            <p><strong>Price:</strong> ${{ room.price_per_night }}/night</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
