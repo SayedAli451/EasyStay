@@ -55,7 +55,7 @@ ROOT_URLCONF = 'stayeasy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'hotel/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'hotel/templates')],  # This looks good
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,13 +116,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'hotel/static'),
+    BASE_DIR / 'hotel/static',  
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db' 
