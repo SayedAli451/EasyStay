@@ -1,0 +1,19 @@
+{% extends 'hotel/base.html' %}
+
+{% block title %}Booking Confirmation - StayEase{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body text-center">
+            <h2 class="card-title">Booking Confirmed! </h2>
+            <p class="card-text"><strong>Room:</strong> {{ booking.room.name }}</p>
+            <p class="card-text"><strong>Check-in:</strong> {{ booking.check_in }}</p>
+            <p class="card-text"><strong>Check-out:</strong> {{ booking.check_out }}</p>
+            <p class="card-text"><strong>Guests:</strong> {{ booking.guests }}</p>
+            <p class="card-text"><strong>Total Price:</strong> ${{ booking.total_price }}</p>
+            <a href="{% url 'room_list' %}" class="btn btn-primary">Browse More Rooms</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

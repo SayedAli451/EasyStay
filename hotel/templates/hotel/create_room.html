@@ -1,0 +1,14 @@
+{% extends 'hotel/base.html' %}
+
+{% block title %}Create Room - StayEase{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Create a New Room</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Create Room</button>
+    </form>
+</div>
+{% endblock %}

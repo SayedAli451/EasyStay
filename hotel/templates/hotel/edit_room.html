@@ -1,0 +1,15 @@
+{% extends 'hotel/base.html' %}
+
+{% block title %}Edit Room - StayEasy{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Room: {{ room.name }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render the form fields here -->
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    <a href="{% url 'room_list' %}" class="btn btn-secondary mt-3">Cancel</a>
+</div>
+{% endblock %}

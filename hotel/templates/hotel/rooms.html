@@ -14,7 +14,52 @@
                     <h5 class="card-title">{{ room.name }}</h5>
                     <p class="card-text">{{ room.description }}</p>
                     <p><strong>Price: ${{ room.price_per_night }}/night</strong></p>
+
+                    {% if user.is_staff %}
+
+
+                    <a href="{% url 'edit_room' room.id %}" class="btn btn-primary">Edit</a>
+
+
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ room.id }}">
+                        Delete
+                    </button>
+
+
+                    <div class="modal fade" id="deleteModal{{ room.id }}" tabindex="-1"
+                        aria-labelledby="deleteModalLabel{{ room.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel{{ room.id }}">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete the room "{{ room.name }}"?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    <form action="{% url 'delete_room' room.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success" disabled>Book Now</button>
+                    {% elif user.is_authenticated %}
+
+
                     <a href="{% url 'book_room' room.id %}" class="btn btn-success">Book Now</a>
+                    {% else %}
+
+
+                    <a href="{% url 'login' %}" class="btn btn-success">Login to Book</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -1,0 +1,27 @@
+{% extends 'hotel/base.html' %}
+
+{% block title %}My Bookings - StayEase{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>My Bookings</h2>
+    <div class="row">
+        {% for booking in bookings %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ booking.room.image_url }}" class="card-img-top" alt="{{ booking.room.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ booking.room.name }}</h5>
+                    <p><strong>Check-in:</strong> {{ booking.check_in }}</p>
+                    <p><strong>Check-out:</strong> {{ booking.check_out }}</p>
+                    <p><strong>Guests:</strong> {{ booking.guests }}</p>
+                    <p><strong>Total Price:</strong> ${{ booking.total_price }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No bookings found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

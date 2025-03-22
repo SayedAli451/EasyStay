@@ -13,6 +13,7 @@ class Room(models.Model):
     capacity = models.IntegerField(default=1) 
     description = models.TextField()
     image_url = models.URLField()  
+    is_available = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -25,7 +26,7 @@ class Booking(models.Model):
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=10, choices=[('pending', 'Pending'), ('confirmed', 'Confirmed'), ('cancelled', 'Cancelled')], default='pending')
     guests = models.IntegerField()
-    
+
     def __str__(self):
         return f"{self.user.username} - {self.room.name} ({self.check_in} to {self.check_out})"
     
