@@ -10,8 +10,21 @@ def home(request):
     return render(request, 'hotel/home.html')
 
 def room_list(request):
+    sort_by = request.GET.get('sort', 'price_per_night')  
+    filter_type = request.GET.get('room_type', '')  
+
     rooms = Room.objects.all()
-    return render(request, 'hotel/rooms.html', {'rooms': rooms})
+
+    if filter_type:
+        rooms = rooms.filter(room_type=filter_type)
+
+    if sort_by == 'low_to_high':
+        rooms = rooms.order_by('price_per_night')
+    elif sort_by == 'high_to_low':
+        rooms = rooms.order_by('-price_per_night')
+
+    return render(request, 'hotel/rooms.html', {'rooms': rooms, 'sort_by': sort_by, 'filter_type': filter_type})
+
 
 def logout_view(request):
     logout(request)
@@ -61,8 +74,17 @@ def my_bookings(request):
 
 @staff_member_required
 def admin_dashboard(request):
-    bookings = Booking.objects.all().order_by('-check_in')
-    return render(request, 'hotel/admin_dashboard.html', {'bookings': bookings})
+    status_filter = request.GET.get('status', 'all')
+    
+    if status_filter == 'all':
+        bookings = Booking.objects.all().order_by('-check_in')
+    else:
+        bookings = Booking.objects.filter(status=status_filter).order_by('-check_in')
+
+    return render(request, 'hotel/admin_dashboard.html', {
+        'bookings': bookings,
+        'status_filter': status_filter
+    })
 
 @staff_member_required
 def update_booking_status(request, booking_id, status):

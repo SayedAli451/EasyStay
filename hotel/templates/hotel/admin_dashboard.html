@@ -5,10 +5,23 @@
 {% block content %}
 <div class="container mt-5">
     <h2>Admin Dashboard</h2>
+
+    <!-- Filter by Status -->
+    <form method="GET" class="mb-3">
+        <label for="status">Filter by Status:</label>
+        <select name="status" id="status" onchange="this.form.submit()">
+            <option value="all" {% if status_filter=='all' %}selected{% endif %}>All</option>
+            <option value="pending" {% if status_filter=='pending' %}selected{% endif %}>Pending</option>
+            <option value="confirmed" {% if status_filter=='confirmed' %}selected{% endif %}>Confirmed</option>
+            <option value="cancelled" {% if status_filter=='cancelled' %}selected{% endif %}>Cancelled</option>
+        </select>
+    </form>
+
     <table class="table">
         <thead>
             <tr>
                 <th>User</th>
+                <th>Email</th>
                 <th>Room</th>
                 <th>Check-in</th>
                 <th>Check-out</th>
@@ -21,6 +34,7 @@
             {% for booking in bookings %}
             <tr>
                 <td>{{ booking.user.username }}</td>
+                <td>{{ booking.user.email }}</td>
                 <td>{{ booking.room.name }}</td>
                 <td>{{ booking.check_in }}</td>
                 <td>{{ booking.check_out }}</td>
@@ -28,8 +42,10 @@
                 <td>{{ booking.status }}</td>
                 <td>
                     {% if booking.status == 'pending' %}
-                        <a href="{% url 'update_booking_status' booking.id 'confirmed' %}" class="btn btn-success btn-sm">Confirm</a>
-                        <a href="{% url 'update_booking_status' booking.id 'cancelled' %}" class="btn btn-danger btn-sm">Cancel</a>
+                    <a href="{% url 'update_booking_status' booking.id 'confirmed' %}"
+                        class="btn btn-success btn-sm">Confirm</a>
+                    <a href="{% url 'update_booking_status' booking.id 'cancelled' %}"
+                        class="btn btn-danger btn-sm">Cancel</a>
                     {% endif %}
                 </td>
             </tr>
