@@ -6,23 +6,23 @@
 <div class="container mt-5">
     <h2 class="text-center">Our Rooms</h2>
 
-
     <form method="GET" class="mb-3">
         <div class="row">
             <div class="col-md-4">
                 <label for="room_type">Filter by Room Type:</label>
                 <select name="room_type" id="room_type" class="form-select">
                     <option value="">All Types</option>
-                    <option value="single" {% if filter_type=="single" %}selected{% endif %}>Single</option>
-                    <option value="double" {% if filter_type=="double" %}selected{% endif %}>Double</option>
-                    <option value="suite" {% if filter_type=="suite" %}selected{% endif %}>Suite</option>
+                    <option value="single" {% if filter_type == "single" %}selected{% endif %}>Single</option>
+                    <option value="double" {% if filter_type == "double" %}selected{% endif %}>Double</option>
+                    <option value="suite" {% if filter_type == "suite" %}selected{% endif %}>Suite</option>
+                    
                 </select>
             </div>
             <div class="col-md-4">
                 <label for="sort">Sort by Price:</label>
                 <select name="sort" id="sort" class="form-select">
-                    <option value="low_to_high" {% if sort_by=="low_to_high" %}selected{% endif %}>Low to High</option>
-                    <option value="high_to_low" {% if sort_by=="high_to_low" %}selected{% endif %}>High to Low</option>
+                    <option value="low_to_high" {% if sort_by == "low_to_high" %}selected{% endif %}>Low to High</option>
+                    <option value="high_to_low" {% if sort_by == "high_to_low" %}selected{% endif %}>High to Low</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -42,13 +42,12 @@
                     <p><strong>Price: ${{ room.price_per_night }}/night</strong></p>
 
                     {% if user.is_staff %}
-
                     <a href="{% url 'edit_room' room.id %}" class="btn btn-primary">Edit</a>
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ room.id }}">
                         Delete
                     </button>
 
-
+                    
                     <div class="modal fade" id="deleteModal{{ room.id }}" tabindex="-1"
                         aria-labelledby="deleteModalLabel{{ room.id }}" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -73,15 +72,15 @@
                         </div>
                     </div>
                     {% elif user.is_authenticated %}
-
                     <a href="{% url 'book_room' room.id %}" class="btn btn-success">Book Now</a>
                     {% else %}
-
                     <a href="{% url 'login' %}" class="btn btn-success">Login to Book</a>
                     {% endif %}
                 </div>
             </div>
         </div>
+        {% empty %}
+        <p class="text-center">No rooms available.</p>
         {% endfor %}
     </div>
 </div>

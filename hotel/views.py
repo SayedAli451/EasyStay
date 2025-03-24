@@ -6,6 +6,10 @@ from django.contrib.auth import login , logout
 from django.contrib.auth.decorators import login_required
 from .forms import BookingForm , RoomForm
 from django.contrib.admin.views.decorators import staff_member_required
+import stripe
+from django.conf import settings
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
 def home(request):
     return render(request, 'hotel/home.html')
 
@@ -95,17 +99,15 @@ def update_booking_status(request, booking_id, status):
 
 @login_required
 def create_room(request):
-    if not request.user.is_staff:
-        return redirect('home')  
-
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('room_list')  
+            room = form.save(commit=False)
+            room.paid = False  
+            room.save()
+            return redirect('room_list')
     else:
         form = RoomForm()
-
     return render(request, 'hotel/create_room.html', {'form': form})
 
 def edit_room(request, room_id):
@@ -130,3 +132,38 @@ def delete_room(request, room_id):
         return redirect('room_list')  
 
     return render(request, 'hotel/rooms.html', {'room': room})
+
+
+@login_required
+def checkout(request, booking_id):
+    booking = Booking.objects.get(id=booking_id, user=request.user)
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price_data': {
+                'currency': 'usd',
+                'product_data': {
+                    'name': booking.room.name,
+                },
+                'unit_amount': int(booking.total_price * 100),
+            },
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url=request.build_absolute_uri('/payment-success/?booking_id=' + str(booking.id)),
+        cancel_url=request.build_absolute_uri('/payment-cancelled/?booking_id=' + str(booking.id)),
+    )
+    return redirect(session.url)
+ 
+def payment_success(request):
+    booking_id = request.GET.get('booking_id')
+    booking = get_object_or_404(Booking, id=booking_id)
+    
+    booking.paid = True
+    booking.save()
+    
+    return render(request, 'hotel/payment_success.html', {'booking': booking})
+
+
+def payment_cancelled(request):
+    return render(request, 'hotel/payment_cancelled.html')

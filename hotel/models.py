@@ -14,6 +14,9 @@ class Room(models.Model):
     description = models.TextField()
     image_url = models.URLField()  
     is_available = models.BooleanField(default=True)
+    paid = models.BooleanField(default=False)
+    
+    
 
     def __str__(self):
         return self.name
@@ -31,7 +34,8 @@ class Booking(models.Model):
     check_out = models.DateField()
     guests = models.IntegerField()
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')  # Default to 'pending'
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending') 
+    paid = models.BooleanField(default=False) 
     
     def __str__(self):
         return f"{self.room.name} - {self.user.username} - {self.status}"

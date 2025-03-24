@@ -1,0 +1,15 @@
+{% extends 'hotel/base.html' %}
+
+{% block title %}Payment Cancelled - StayEase{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center text-danger">Payment Cancelled</h2>
+    <div class="alert alert-danger" role="alert">
+        We're sorry, but your payment was cancelled. Please try again later or contact support if the issue persists.
+    </div>
+    <div class="text-center">
+        <a href="{% url 'room_list' %}" class="btn btn-primary">Return to Rooms</a>
+    </div>
+</div>
+{% endblock %}

@@ -25,6 +25,17 @@
                         <span class="badge bg-danger">Cancelled</span>
                         {% endif %}
                     </p>
+
+                    {% if booking.status == 'confirmed' %}
+                    <p><strong>Payment Status:</strong>
+                        {% if booking.paid %}
+                            <span class="badge bg-success">Paid</span>
+                        {% else %}
+                            <span class="badge bg-danger">Not Paid</span>
+                            <a href="{% url 'checkout' booking.id %}" class="btn btn-primary">Pay Now</a>
+                        {% endif %}
+                    </p>
+                    {% endif %}
                 </div>
             </div>
         </div>
