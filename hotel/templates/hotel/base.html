@@ -9,8 +9,8 @@
 
     {% load static %}
 
-    <link rel="stylesheet" href="{% static 'hotel/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'hotel/css/admin.css' %}"> 
+    
+    <link rel="stylesheet" href="{% static 'hotel/css/style.css' %}">
 </head>
 
 <body>
@@ -23,14 +23,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto"> <!-- Align left items to the left -->
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/rooms/">Rooms</a>
                     </li>
-
+                </ul>
+    
+                <ul class="navbar-nav ms-auto"> <!-- Align right items to the right -->
                     {% if user.is_authenticated %}
                         {% if not user.is_staff %}
                             <li class="nav-item">
@@ -51,7 +53,7 @@
                             <a class="nav-link" href="{% url 'register' %}">Register</a>
                         </li>
                     {% endif %}
-
+    
                     {% if user.is_staff %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
@@ -61,6 +63,7 @@
             </div>
         </div>
     </nav>
+    
 
     <div class="container-fluid">
         <div class="row">
@@ -98,11 +101,24 @@
         </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 EasyStay Hotel. All rights reserved.</p>
+    <footer class="bg-dark text-white text-center py-5 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 EasyStay Hotel. All rights reserved.</p>
+            <div class="mt-3">
+                <a href="#" class="text-white me-3"><svg width="24" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M6.17 0C5.57 0 5 .57 5 1.17v13.66c0 .6.57 1.17 1.17 1.17H9.5c.6 0 1.17-.57 1.17-1.17V5.5h2.83L14 3H10.67V1.83C10.67.92 11.42 0 12.42 0h1.92v2.83h-2.42c-.4 0-.67.27-.67.67v1.92h3.42l-.5 2.5H12v7.5c0 .6-.57 1.17-1.17 1.17H6.17C5.57 16 5 15.43 5 14.83V1.17c0-.6.57-1.17 1.17-1.17z"/>
+                </svg></a>
+                <a href="#" class="text-white me-3"><svg width="24" height="24" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path d="M5.026 15C10.36 15 12.88 9.815 12.88 5.758c0-.23-.016-.46-.048-.688A8.377 8.377 0 0 0 16 3.118a8.31 8.31 0 0 1-2.357.647A4.075 4.075 0 0 0 15.555 1a8.467 8.467 0 0 1-2.673.997A4.071 4.071 0 0 0 7.87 5.19a11.5 11.5 0 0 1-8.377-4.26A4.043 4.043 0 0 0 2.654 5.5c0 1.42.72 2.667 1.82 3.396a4.097 4.097 0 0 1-1.84-.508v.051a4.078 4.078 0 0 0 3.264 4.003 4.09 4.09 0 0 1-1.835.07A4.082 4.082 0 0 0 5 13.575a8.145 8.145 0 0 1-5.22 1.818A8.452 8.452 0 0 0 5.026 15z"/>
+                </svg></a>
+                <a href="#" class="text-white me-3"><svg width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                    <path d="M8 0a3.016 3.016 0 0 0-3.016 3.016v10.968A3.016 3.016 0 0 0 8 16a3.016 3.016 0 0 0 3.016-3.016V3.016A3.016 3.016 0 0 0 8 0zm0 14.308a6.327 6.327 0 0 1-6.308-6.308V7.107c.732.276 1.473.567 2.216.853a5.996 5.996 0 0 1 4.094 0c.743-.287 1.484-.577 2.216-.853v7.893a6.327 6.327 0 0 1-6.308 6.308z"/>
+                </svg></a>
+            </div>
+        </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 </body>
 

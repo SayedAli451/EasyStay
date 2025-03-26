@@ -1,24 +1,155 @@
-.hero {
-    background-image: url('https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 0;
-}
-
-.hero h1 {
-    font-size: 3rem;
-}
-
-.hero p {
-    font-size: 1.25rem;
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 
-body {
-    font-family: Arial, sans-serif;
+.flex-item {
+    flex: 1 1 calc(33.33% - 20px);
+    box-sizing: border-box;
 }
 
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    height: 200px;
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+
+
+.badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+@media (max-width: 768px) {
+    .flex-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .flex-item {
+        flex: 1 1 100%;
+    }
+}
+
+
+.card-body a {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+}
+
+.modal-footer {
+    background-color: #f1f1f1;
+}
+
+
+.form-select {
+    margin-bottom: 20px;
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+}
+
+.gallery {
+    gap: 30px;
+}
+
+.flex-item {
+    flex: 1 1 calc(33.33% - 20px);
+    box-sizing: border-box;
+}
+
+
+.social-icons a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+}
 
 .card-container {
     max-width: 400px;
@@ -60,7 +191,10 @@ body {
 }
 
 
-input[type="text"], input[type="password"], input[type="email"], select {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
     width: 100%;
     padding: 12px;
     margin: 10px 0;

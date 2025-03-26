@@ -3,41 +3,76 @@
 {% block title %}Home - StayEasy{% endblock %}
 
 {% block content %}
-<div class="hero text-center py-5">
-    <h1 class="display-4">Welcome to EasyStay</h1>
-    <p class="lead">Your perfect getaway awaits. Book your stay today!</p>
+
+<div class="hero text-center py-5" style="background-color: #f8f9fa;">
+    <h1 class="display-4 font-weight-bold text-primary">Welcome to EasyStay</h1>
+    <p class="lead text-dark">Your perfect getaway awaits. Book your stay today!</p>
+
 </div>
 
-<div class="container mt-4">
-    <h2 class="text-center">Our Beautiful Hotel</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <figure>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">About Us</h2>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-body text-center">
+                    <h4 class="card-title text-primary">Our Mission</h4>
+                    <p class="card-text">At EasyStay, we provide a luxury experience at affordable prices. Our goal is
+                        to make your stay as comfortable and unforgettable as possible.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-body text-center">
+                    <h4 class="card-title text-primary">Luxury & Comfort</h4>
+                    <p class="card-text">Experience unparalleled comfort with our state-of-the-art amenities, designed
+                        to cater to your every need.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Our Beautiful Hotel</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <figure class="position-relative">
                 <img src="https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg"
-                    alt="StayEasy Hotel" class="img-fluid" style="height: 400px; object-fit: cover;">
+                    alt="StayEasy Hotel" class="img-fluid rounded shadow-sm" style="height: 400px; object-fit: cover;">
+                <figcaption class="position-absolute top-0 start-0 p-3 text-white bg-dark bg-opacity-50">StayEasy Hotel
+                </figcaption>
             </figure>
         </div>
-        <div class="col-md-4">
-            <figure>
+        <div class="col">
+            <figure class="position-relative">
                 <img src="https://imageio.forbes.com/specials-images/imageserve/652f603a91415a3d647fc207/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds"
-                    alt="Hotel Image 2" class="img-fluid" style="height: 400px; object-fit: cover;">
+                    alt="Hotel Image 2" class="img-fluid rounded shadow-sm" style="height: 400px; object-fit: cover;">
+                <figcaption class="position-absolute top-0 start-0 p-3 text-white bg-dark bg-opacity-50">Elegant Rooms
+                </figcaption>
             </figure>
         </div>
-        <div class="col-md-4">
-            <figure>
+        <div class="col">
+            <figure class="position-relative">
                 <img src="https://images.pexels.com/photos/2507010/pexels-photo-2507010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="Hotel Image 3" class="img-fluid" style="height: 400px; object-fit: cover;">
+                    alt="Hotel Image 3" class="img-fluid rounded shadow-sm" style="height: 400px; object-fit: cover;">
+                <figcaption class="position-absolute top-0 start-0 p-3 text-white bg-dark bg-opacity-50">Luxury
+                    Interiors</figcaption>
             </figure>
         </div>
     </div>
 </div>
 
-<div class="container mt-5">
-    <h2 class="text-center">Experience Luxury & Comfort</h2>
-    <p class="text-center">Book your stay at the most comfortable and elegant hotel, designed for your relaxation and
-        convenience.</p>
+
+<div class="container mt-5 py-5" style="background-color: #f8f9fa;">
+    <h2 class="text-center mb-4">Experience Luxury & Comfort</h2>
+    <p class="text-center mb-4">Book your stay at the most comfortable and elegant hotel, designed for your relaxation
+        and convenience.</p>
     <div class="text-center">
-        <a href="/rooms/" class="btn btn-lg btn-primary">Browse Rooms</a>
+        <a href="/rooms/" class="btn btn-primary btn-lg py-2 px-4 rounded-pill">Browse Rooms</a>
     </div>
 </div>
 

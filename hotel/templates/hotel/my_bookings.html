@@ -3,15 +3,18 @@
 {% block title %}My Bookings - StayEase{% endblock %}
 
 {% block content %}
+<!-- My Bookings Section -->
 <div class="container mt-5">
-    <h2>My Bookings</h2>
-    <div class="row">
+    <h2 class="text-center mb-5">My Bookings</h2>
+
+    <!-- Bookings Display Section -->
+    <div class="flex-container">
         {% for booking in bookings %}
-        <div class="col-md-4">
-            <div class="card mb-4">
+        <div class="flex-item">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
                 <img src="{{ booking.room.image_url }}" class="card-img-top" alt="{{ booking.room.name }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ booking.room.name }}</h5>
+                    <h5 class="card-title text-center">{{ booking.room.name }}</h5>
                     <p><strong>Check-in:</strong> {{ booking.check_in }}</p>
                     <p><strong>Check-out:</strong> {{ booking.check_out }}</p>
                     <p><strong>Guests:</strong> {{ booking.guests }}</p>
@@ -32,7 +35,7 @@
                             <span class="badge bg-success">Paid</span>
                         {% else %}
                             <span class="badge bg-danger">Not Paid</span>
-                            <a href="{% url 'checkout' booking.id %}" class="btn btn-primary">Pay Now</a>
+                            <a href="{% url 'checkout' booking.id %}" class="btn btn-primary mt-3">Pay Now</a>
                         {% endif %}
                     </p>
                     {% endif %}
@@ -40,8 +43,9 @@
             </div>
         </div>
         {% empty %}
-        <p>No bookings found.</p>
+        <p class="text-center">You have no bookings.</p>
         {% endfor %}
     </div>
 </div>
+
 {% endblock %}

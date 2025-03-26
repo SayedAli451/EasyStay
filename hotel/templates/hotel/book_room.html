@@ -11,11 +11,12 @@
             <h5 class="card-title">{{ room.name }}</h5>
             <p><strong>Capacity:</strong> {{ room.capacity }} guests</p>
             <p><strong>Price:</strong> ${{ room.price_per_night }}/night</p>
-            <form method="post">
+            <form method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                {{ form.as_p }}  
+                <button type="submit">Book Now</button>
             </form>
+            
         </div>
     </div>
 </div>

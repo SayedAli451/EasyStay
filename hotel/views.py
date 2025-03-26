@@ -55,13 +55,12 @@ def book_room(request, room_id):
         if form.is_valid():
             booking = form.save(commit=False)
             booking.user = request.user
-            booking.room = room 
+            booking.room_type = room  # You need to assign the correct room here based on the room type
             booking.total_price = (booking.check_out - booking.check_in).days * room.price_per_night
             booking.save()
             return redirect('booking_confirmation', booking_id=booking.id)
-
     else:
-        form = BookingForm(initial={'room': room})
+        form = BookingForm(initial={'room_type': room.room_type})  # Make sure to set the default room type
 
     return render(request, 'hotel/book_room.html', {'form': form, 'room': room})
 
