@@ -31,7 +31,7 @@ STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if not 'ON_HEROKU' in os.environ:
-DEBUG = True
+    DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
