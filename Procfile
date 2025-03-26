@@ -1,1 +1,1 @@
-web: gunicorn <EasyStay>.wsgi
+web: gunicorn stayeasy.wsgi
