@@ -4,7 +4,7 @@
 EasyStay is a hotel management system built with Django and PostgreSQL. It provides seamless room booking, user authentication, and an intuitive admin dashboard for managing bookings and payments. The system integrates Stripe for secure transactions .
 
 ## Getting Started
-- 
+- https://easy-stay-c5897aa3ab13.herokuapp.com/
 
 
 ## Technologies Used

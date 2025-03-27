@@ -20,7 +20,6 @@
         <thead>
             <tr>
                 <th>User</th>
-                <th>Email</th>
                 <th>Room</th>
                 <th>Check-in</th>
                 <th>Check-out</th>
@@ -34,7 +33,6 @@
             {% for booking in bookings %}
             <tr>
                 <td>{{ booking.user.username }}</td>
-                <td>{{ booking.user.email }}</td>
                 <td>{{ booking.room.name }}</td>
                 <td>{{ booking.check_in }}</td>
                 <td>{{ booking.check_out }}</td>
